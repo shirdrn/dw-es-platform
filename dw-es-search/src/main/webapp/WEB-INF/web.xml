@@ -1,0 +1,64 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_4.dtd" >
+
+<web-app>
+	<display-name>Archetype Created Web Application</display-name>
+
+	<servlet>
+		<servlet-name>RestSearchUserByIDAction</servlet-name>
+		<display-name>RestSearchUserByIDAction</display-name>
+		<description></description>
+		<servlet-class>org.shirdrn.dw.es.search.actions.user.RestSearchUserByIDAction</servlet-class>
+		<init-param>
+			<param-name>es.cluster.name</param-name>
+			<param-value>dw_search_engine</param-value>
+		</init-param>
+		<init-param>
+			<param-name>es.rest.address</param-name>
+			<param-value>10.10.2.62:9200,10.10.2.245:9200</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<servlet-name>RestSearchUserByPageAction</servlet-name>
+		<display-name>RestSearchUserByPageAction</display-name>
+		<description></description>
+		<servlet-class>org.shirdrn.dw.es.search.actions.user.RestSearchUserByPageAction</servlet-class>
+		<init-param>
+			<param-name>es.cluster.name</param-name>
+			<param-value>dw_search_engine</param-value>
+		</init-param>
+		<init-param>
+			<param-name>es.rest.address</param-name>
+			<param-value>10.10.2.62:9200,10.10.2.245:9200</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<servlet-name>EscSearchUserByPageAction</servlet-name>
+		<display-name>EscSearchUserByPageAction</display-name>
+		<description></description>
+		<servlet-class>org.shirdrn.dw.es.search.actions.user.EscSearchUserByPageAction</servlet-class>
+		<init-param>
+			<param-name>es.cluster.name</param-name>
+			<param-value>dw_search_engine</param-value>
+		</init-param>
+		<init-param>
+			<param-name>es.tcp.address</param-name>
+			<param-value>10.10.2.62:9300,10.10.2.245:9300</param-value>
+		</init-param>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>RestSearchUserByIDAction</servlet-name>
+		<url-pattern>/searchUserByID.rest</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>RestSearchUserByPageAction</servlet-name>
+		<url-pattern>/searchUserByPage.rest</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ESSearchUserByPageAction</servlet-name>
+		<url-pattern>/searchUserByPage.esc</url-pattern>
+	</servlet-mapping>
+
+</web-app>
