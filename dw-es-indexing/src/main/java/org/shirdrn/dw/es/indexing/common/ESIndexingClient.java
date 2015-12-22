@@ -35,7 +35,7 @@ public abstract class ESIndexingClient extends RetryIndexingClient<Client, Index
 	
 	@Override
 	protected Client buildClient() {
-		return EsClientUtils.buildClient(clusterName, super.getHostNBames(), super.getSettings());
+		return EsClientUtils.buildClient(clusterName, super.getHostNames(), super.getSettings());
 	}
 	
 	@Override
