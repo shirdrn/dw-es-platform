@@ -1,0 +1,31 @@
+curl -XPUT 'http://10.10.2.62:9200/user_info/' -d '
+{
+    "mappings": {
+        "user": {
+        "_all":       { "enabled": false  },
+        "properties": {
+            "channel":  { "type":   "string", "index":  "analyzed" },
+            "current_channel":  { "type":   "string", "index":  "analyzed" },
+            "channel_type":    { "type": "string"  },
+            "device_type":    { "type": "string"  },
+            "device_name":    { "type": "string", "index":  "analyzed"  },
+            "version":    { "type": "string"  },
+            "os_version":    { "type": "string"  },
+            "carrier_operator":    { "type": "string"  },
+            "network":    { "type": "string"  },
+            "resolution":    { "type": "string"  },
+            "ip":    { "type": "string"  },
+            "area_code":    { "type":   "string"  },
+            "login_date":    { "type":   "date", "format": "yyyy-MM-dd" },
+            "last_date":    { "type":   "date", "format": "yyyy-MM-dd" },
+            "first_open_date":    { "type":   "date", "format": "yyyy-MM-dd" },
+            "first_play_date":    { "type":   "date", "format": "yyyy-MM-dd" },
+            "create_time":  { "type":   "date", "format": "yyyy-MM-dd HH:mm:ss" },
+            "first_open_or_play_date":    { "type":   "date", "format": "yyyy-MM-dd" },
+            "mac":    { "type": "string"  },
+            "idfa":    { "type": "string"  },
+            "imei":    { "type": "string"  }
+        }
+    }
+    }
+}'
