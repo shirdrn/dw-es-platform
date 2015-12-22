@@ -73,7 +73,7 @@ public abstract class AbstractIndexingClient implements IndexingClient {
 		}
 	}
 	
-	protected List<String> getHostNBames() {
+	protected List<String> getHostNames() {
 		return hostNames;
 	}
 
