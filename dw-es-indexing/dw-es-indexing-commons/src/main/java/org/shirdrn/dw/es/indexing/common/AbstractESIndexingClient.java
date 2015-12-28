@@ -1,8 +1,6 @@
 package org.shirdrn.dw.es.indexing.common;
 
-import java.io.File;
 import java.io.IOException;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.logging.Log;
@@ -22,13 +20,9 @@ import org.shirdrn.dw.es.indexing.api.IndexRequestCreator;
 import org.shirdrn.dw.es.indexing.constants.ESConfigKeys;
 import org.shirdrn.dw.es.utils.EsClientUtils;
 
-import com.google.common.base.Preconditions;
-import com.google.common.collect.Lists;
-
 public abstract class AbstractESIndexingClient<RECORD, CONTENT> extends RetryIndexingClient<RECORD, CONTENT, Client, IndexRequest> {
 
 	private static final Log LOG = LogFactory.getLog(AbstractESIndexingClient.class);
-	private final List<File> inputFiles = Lists.newArrayList();
 	
 	public AbstractESIndexingClient(IndexRequestCreator<RECORD, CONTENT> indexRequestCreator) {
 		super(indexRequestCreator);
@@ -50,22 +44,6 @@ public abstract class AbstractESIndexingClient<RECORD, CONTENT> extends RetryInd
 		return true;
 	}
 	
-	public void addInputFiles(String... files) {
-		for(String file : files) {
-			addInputFile(file);
-		}
-	}
-	
-	public void addInputFile(String file) {
-		inputFiles.add(new File(file));
-	}
-	
-	protected void checkInputFiles() {
-		for(File file : inputFiles) {
-			Preconditions.checkArgument(file.exists(), "File doesn't exist: " + file);
-		}
-	}
-
 	protected BulkProcessor buildBulkProcessor() {
 		// https://www.elastic.co/guide/en/elasticsearch/client/java-api/2.0/java-docs-bulk-processor.html
 		int bulkActions = config.getInt(ESConfigKeys.ES_INDEX_BULK_BATCH_COUNT, 1000);
@@ -122,8 +100,4 @@ public abstract class AbstractESIndexingClient<RECORD, CONTENT> extends RetryInd
 		
 	}
 
-	public List<File> getInputFiles() {
-		return inputFiles;
-	}
-	
 }

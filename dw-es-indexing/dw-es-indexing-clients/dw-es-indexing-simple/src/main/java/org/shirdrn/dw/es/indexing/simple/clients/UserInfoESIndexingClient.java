@@ -12,7 +12,7 @@ import org.elasticsearch.common.xcontent.XContentBuilder;
 import org.shirdrn.dw.es.indexing.api.ContentBuilder;
 import org.shirdrn.dw.es.indexing.api.IndexRequestCreator;
 import org.shirdrn.dw.es.indexing.api.IndexingDataSource;
-import org.shirdrn.dw.es.indexing.common.AbstractESIndexingClient;
+import org.shirdrn.dw.es.indexing.common.FileESIndexingClient;
 import org.shirdrn.dw.es.indexing.constants.ESConfigKeys;
 import org.shirdrn.dw.es.indexing.datasource.FileIndexingDataSource;
 import org.shirdrn.dw.es.indexing.simple.creators.UserInfoIndexRequestCreator;
@@ -20,7 +20,7 @@ import org.shirdrn.dw.es.indexing.simple.creators.UserInfoIndexRequestCreator;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Throwables;
 
-public class UserInfoESIndexingClient extends AbstractESIndexingClient<String, XContentBuilder> {
+public class UserInfoESIndexingClient extends FileESIndexingClient<String, XContentBuilder> {
 
 	private static final Log LOG = LogFactory.getLog(UserInfoESIndexingClient.class);
 	
